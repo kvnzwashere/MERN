@@ -1,21 +1,26 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import CreateBlog from '../CreateBlog';
-import DetailBlog from '../DetailBlog';
-import Home from '../Home';
+import React from 'react'
+import { LoginBg } from '../../assets';
+import { Button, Gap, Input, Link } from '../../assets/components';
 
-const MainApp = () => {
+const Login = () => {
   return (
-    <div>
-      <p>header</p>
-        <Routes>
-          <Route path='/create-blog' element={<CreateBlog />} ></Route>
-          <Route path='/detail-blog' element={<DetailBlog />} ></Route>
-          <Route path='/' element={<Home />} ></Route>
-        </Routes>
-      <p>footer</p>
+    <div className="main-page">
+      <div className="left">
+        <img src={LoginBg} className="bg-image" alt="imageBg" />
     </div>
-  );
+    <div className="right">
+        <p className="title">Login</p>
+      
+        <Input label="Email" placeholder="Email" />
+        <Gap height={20} />
+        <Input label="Password" placeholder="Password" />
+        <Gap height={35} />
+        <Button title="Login" />
+        <Gap height={100} />
+        <Link title="Belum Punya Akun?" />
+        </div>
+      </div>
+  )
 }
 
-export default MainApp;
+export default Login
