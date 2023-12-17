@@ -1,0 +1,53 @@
+Standart API
+
+{root.api}/{version}/{grouping}/{endpoint}
+SAMPLE:
+http://mern-api.kvnzl.com/v1
+
+Standar status response
+200 - OK --> Call API Success
+201 - CREATED --> Post Success
+400 - BAD REQUEST --> Error on Client Side (Bisa input yang salah dll).
+403 - FORBIDDEN --> User not allowed to access.
+404 - NOT FOUND --> Request Endpoint Not Found.
+500 - INTERNAL SERVER DOWN --> Error on Server Side
+502 - BAD GATEWAY --> Invalid Response From Another Request
+
+===================================================================================
+
+
+GROUP: Authentication
+
+[1] - Register
+{root.api}/{version}/auth/register
+
+req:
+{
+    "name": "Testing"
+    "email": "Test@email.com"
+    "password": "12345"
+}
+
+res:
+{
+    "message": "Register Succeses" ,
+    "data": {
+        "id": 1,
+        "name": "Testing",
+        "email": "testemail@.com",
+        "password" : "12345"
+    }
+}
+
+err-response:
+400 -> Input yang anda berikan tidak valid
+
+[2] -Login
+{root.api}/{version}/auth/login
+
+GROUP: BLOG
+
+[1] - Create blog post
+[2] - Get blog post
+[3] - Update blog post
+[4] - Delete blog post
