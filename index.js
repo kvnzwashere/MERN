@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const multer = require('multer');
+const path = require('path');
 
 const app = express();
 const authRoutes = require('./src/routes/auth');
@@ -12,7 +13,7 @@ const fileStorage = multer.diskStorage({
         cb(null, 'images');
     },
     filename: (req, file, cb) => {
-        cb(null, new Date().getTime() +'-'+ file.originalname)
+        cb(null, new Date().getTime() + '-' + file.originalname)
     }
 })
 
@@ -27,7 +28,9 @@ const fileFilter = (req, file, cb) => {
 }
 
 app.use(bodyParser.json()); // type JSON
-app.use(multer({storage : fileStorage, fileFilter: fileFilter }).single('image'));
+
+app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use(multer({ storage: fileStorage, fileFilter: fileFilter }).single('image'));
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
